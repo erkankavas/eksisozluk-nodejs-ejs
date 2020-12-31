@@ -7,7 +7,7 @@ This Node.js program retrieves the latest topics from the eksi sozluk website. I
 Connects to eksi sozluk's trends topics to fetch the latest titles.
 Utilizes web scraping to accurately extract and parse the latest topics.
 Ensures real-time updates, reflecting the most current discussions on the platform.
-Displays the retrieved topics in a user-friendly format.
+Displays the retrieved topics in an user-friendly format.
 This program is ideal for users who want to stay informed about the latest trends and discussions on eksisozluk without manually browsing the site.
 
 ## Usage 
