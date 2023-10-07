@@ -9,4 +9,4 @@ getting latest titles from toplist
 
 ## demo picture
 
-![demo picture](/public/eksi.png)git ffg
+...
