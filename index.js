@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
      getTitleInfo();
         async function getTitleInfo() {
             let body = await request({
-                url: "https://eksisozluk1923.com/basliklar/gundem",
+                url: "https://eksisozluk.com/basliklar/gundem",
                 method: "GET"
             });
             let $ = cheerio.load(body);
