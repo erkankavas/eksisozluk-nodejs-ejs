@@ -5,51 +5,36 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  try {
+    const body = await request({
+      url: "https://eksisozluk.com/basliklar/gundem",
+      method: "GET"
+    });
+    const $ = cheerio.load(body);
+    const result = await extractWithCheerio($);
 
-    try { 
-     getTitleInfo();
-        async function getTitleInfo() {
-            let body = await request({
-                url: "https://eksisozluk.com/basliklar/gundem",
-                method: "GET"
-            });
-            let $ = cheerio.load(body);
-            let resultx = extractWithCheerio($);
-           
-            resultx.then(result => {
-            res.render("index.ejs", {
-              data: result
-              })
-            })
-            .catch(error => {
-              console.error(error);
-            })  
-        }
-        
-        async function extractWithCheerio($) {
-            const links = [];
-            const listItems = $(".topic-list li");
-              listItems.each((idx, el) => {
-                const link = { title: "", href: "" };
-                link.title = $(el).children("a").text();
-                link.href = $(el).children("a").attr('href');
-                links.push(link);
-
-            });
-            return links
-        }
-        
-        
-    } catch (err) {
-        console.error("ERR", err);
-    }
-
-
- 
+    res.render("index.ejs", {
+      data: result
+    });
+  } catch (error) {
+    console.error("Error fetching or processing data:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
+async function extractWithCheerio($) {
+  const links = [];
+  const listItems = $(".topic-list li");
+  listItems.each((idx, el) => {
+    const link = { title: "", href: "" };
+    link.title = $(el).children("a").text();
+    link.href = $(el).children("a").attr("href");
+    links.push(link);
+  });
+  return links;
+}
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-  });
+  console.log(`Listening on port ${port}`);
+});
