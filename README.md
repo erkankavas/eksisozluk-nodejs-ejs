@@ -10,10 +10,20 @@ Ensures real-time updates, reflecting the most current discussions on the platfo
 Displays the retrieved topics in a user-friendly format.
 This program is ideal for users who want to stay informed about the latest trends and discussions on eksisozluk without manually browsing the site.
 
-## Test
+## Usage 
 
-- npm install
-- node index.js
+  ```bash 
+  git https://github.com/erkankavas/eksisozluk-nodejs-ejs
+  cd eksisozluk-nodejs-ejs
+  npm install
+  node index.js
+  ```
+
+### Still Problem
+
+  ```bash 
+  npm cache clean --force
+  ```
 
 ## Support
 
